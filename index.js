@@ -1,10 +1,11 @@
 const express = require('express');
-const shortId = require('shortid')
+const shortId = require('shortid');
+require('dotenv').config();
 
 const server = express()
 server.use(express.json())
 
-const PORT = 5000
+const PORT = process.env.PORT || 5000
 
 server.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
@@ -19,7 +20,7 @@ let users = [
 ]
 
 //Initial Method
-server.get()('/', (req, res) => {
+server.get('/', (req, res) => {
     res.json({ message: 'Welcome to the users page' });
 })
 
